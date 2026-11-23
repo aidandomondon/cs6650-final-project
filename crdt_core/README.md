@@ -1,0 +1,1 @@
+This module contains the core CRDT implementation.
