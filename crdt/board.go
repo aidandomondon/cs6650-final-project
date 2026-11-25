@@ -45,3 +45,18 @@ func (b *Board) AddStroke(coors []CoordinatePair) error {
 	}
 	return nil
 }
+
+func (b *Board) equals(other *Board) bool {
+	// check if dimensions are equal
+	if ((*b).getHeight() != (*other).getHeight()) || ((*b).getWidth() != (*other).getWidth()) {
+		return false
+	}
+	// check if entries are equal
+	isEqual := true
+	for y := 0; y < (*b).getHeight(); y++ {
+		for x := 0; x < (*b).getWidth(); x++ {
+			isEqual = isEqual && ((*b).Pixels[y][x] == (*other).Pixels[y][x])
+		}
+	}
+	return isEqual
+}

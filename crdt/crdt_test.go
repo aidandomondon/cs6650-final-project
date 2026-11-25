@@ -17,3 +17,27 @@ func TestCannotStrokeOutOfBounds(t *testing.T) {
 		t.FailNow()
 	}
 }
+
+// Tests tat adding a valid stroke changes the 2D slice
+// of the Board to have the expected pixels set to true
+func TestStrokeChangesInternalSlice(t *testing.T) {
+	b := Board{[][]Pixel{
+		{Pixel{IsFilled: false}, Pixel{IsFilled: false}},
+		{Pixel{IsFilled: false}, Pixel{IsFilled: false}},
+	}}
+	stroke := []CoordinatePair{
+		{X: 0, Y: 0},
+		{X: 1, Y: 1},
+	}
+	err := b.AddStroke(stroke)
+	if err != nil {
+		t.FailNow()
+	}
+	expected := Board{[][]Pixel{
+		{Pixel{IsFilled: true}, Pixel{IsFilled: false}},
+		{Pixel{IsFilled: false}, Pixel{IsFilled: true}},
+	}}
+	if !b.equals(&expected) {
+		t.FailNow()
+	}
+}
