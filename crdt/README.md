@@ -6,7 +6,6 @@ Conceptually, this design consists of a board, which is represented as a 2D arra
 
 These entities are represented by structs
 - `Board`: [board.go](./board.go)
-- `Pixel`: [pixel.go](./pixel.go)
 - `CoordinatePair`: [utils.go](./utils.go)
 
 Specifying this as an interface, we have:
